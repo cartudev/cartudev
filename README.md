@@ -1,4 +1,4 @@
-<img src="images/svg/header_en.svg"></img>
+<img src="images/banner.svg"></img>
 
 <!--
 **cartudev/cartudev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
