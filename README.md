@@ -1,16 +1,61 @@
 <img src="images/banner.svg"></img>
 
-<!--
-**cartudev/cartudev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### 🌐 Welcome to My GitHub Profile!
 
-Here are some ideas to get you started:
+I am a passionate full-stack developer with a strong focus on front-end technologies. My goal is to build efficient, scalable, and user-friendly applications. I enjoy learning new technologies and continuously improving my skills.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 🚀 About Me
+- 💻 Currently working on web development projects using React, TypeScript, and Node.js.
+- 📚 Learning and experimenting with new technologies and frameworks.
+- 🎨 Interested in UI/UX design and improving user experience.
+- 🌍 Based in Córdoba, Argentina.
+
+---
+
+## 🛠️ Technologies & Tools
+- **Frontend:** React, TypeScript, JavaScript, HTML, CSS, Sass, TailwindCSS
+- **Backend:** Node.js, Express.js, Python, PHP
+- **Databases:** MongoDB, SQL, Firebase
+- **CMS:** WordPress, WooCommerce
+- **Tools:** Git, GitHub, Docker, VSCode, Postman, Figma
+
+---
+
+## 📂 Projects
+### 1. [7tal Works](https://github.com/cartudev/7talWorks)
+This is a design plugin for modular structural systems created in Python for use in Blender 3.5.
+
+### 2. [Pure Minesweeper](https://github.com/cartudev/minesweeper)
+A classic minesweeper game implemented with vanilla JavaScript. Features theme selection and customizable grid sizes.
+
+### 3. [Wordpress - WooCommerce theme](https://github.com/cartudev/Wordpress-WooCommerce-Theme)
+A WordPress WooCommerce child theme based on Storefront, currently under development.
+
+### 4. [TuBar](https://github.com/cartudev/tubar-reactnative--original)
+A mobile app for bar management, including order processing, management, and reporting, built with a team.
+
+### 5. [Automate-PDF](https://github.com/cartudev/Automate-PDF)
+A CLI application that automates data entry into templates from files.
+
+---
+
+## 📈 GitHub Stats
+![Carlos's GitHub stats](https://github-readme-stats.vercel.app/api?username=cartudev&show_icons=true&theme=radical)
+
+---
+
+## 📫 How to Reach Me
+- **Email:** [cartcarll@gmail.com](mailto:cartcarll@gmail.com)
+- **LinkedIn:** [linkedin.com/in/yourprofile](https://www.linkedin.com/in/yourprofile)
+- **Portfolio:** [https://cartudev.github.io/](https://cartudev.github.io/)
+
+---
+
+Thank you for visiting my GitHub profile. Feel free to explore my repositories and reach out if you have any questions or collaboration ideas!
+
+---
+
+![Visitor Count](https://visitor-badge.glitch.me/badge?page_id=cartudev.cartudev)
+
