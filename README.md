@@ -57,5 +57,6 @@ Thank you for visiting my GitHub profile. Feel free to explore my repositories a
 
 ---
 
-![Visitor Count](https://visitor-badge.glitch.me/badge?page_id=cartudev.cartudev)
+![Visitor Count](https://komarev.com/ghpvc/?username=cartudev&color=blue)
+
 
