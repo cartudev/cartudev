@@ -42,7 +42,7 @@ A CLI application that automates data entry into templates from files.
 ---
 
 ## 📈 GitHub Stats
-![Carlos's GitHub stats](https://github-readme-stats.vercel.app/api?username=cartudev&show_icons=true&theme=radical)
+![cartudev Github Stats](https://github-readme-stats.vercel.app/api?username=cartudev&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
 
 ---
 
