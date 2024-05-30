@@ -2,7 +2,7 @@
 
 ### 🌐 Welcome to My GitHub Profile!
 
-I am a passionate full-stack developer with a strong focus on front-end technologies. My goal is to build efficient, scalable, and user-friendly applications. I enjoy learning new technologies and continuously improving my skills.
+I am a full-stack developer with a strong focus on front-end technologies. My goal is to build efficient, scalable, and user-friendly applications. I enjoy learning new technologies and continuously improving my skills. Additionally, I am an Arch Linux enthusiast, always exploring its capabilities and customization options.
 
 ---
 
