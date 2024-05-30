@@ -48,7 +48,7 @@ A CLI application that automates data entry into templates from files.
 
 ## 📫 How to Reach Me
 - **Email:** [cartcarll@gmail.com](mailto:cartcarll@gmail.com)
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://www.linkedin.com/in/yourprofile)
+- **LinkedIn:** [linkedin.com/in/cartcarll/](https://www.linkedin.com/in/cartcarll/)
 - **Portfolio:** [https://cartudev.github.io/](https://cartudev.github.io/)
 
 ---
