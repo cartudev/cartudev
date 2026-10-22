@@ -23,7 +23,7 @@ jobs:
 
           base: header, activity, community, repositories
 
-          config_theme: radical
+          template: radical
           config_timezone: America/Argentina/Cordoba
 
           # Full-year 3D contribution calendar
@@ -32,4 +32,5 @@ jobs:
 
           # Real language split (private repos included via METRICS_TOKEN)
           plugin_languages: yes
+          plugin_languages_indepth: yes
           plugin_languages_limit: 8
