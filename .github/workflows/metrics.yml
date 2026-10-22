@@ -29,7 +29,7 @@ jobs:
 
           base: header, activity, community, repositories
 
-          template: radical
+          template: terminal
           config_timezone: America/Argentina/Cordoba
 
           # Full-year 3D contribution calendar
