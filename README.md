@@ -2,7 +2,7 @@
 
 ### 👋 Hi, I'm Carlos — cartudev
 
-Full-stack developer from Córdoba, Argentina. Lately I live in the terminal: I build the tools I use every day — a terminal music player, a Telegram streamer, an Android EPUB reader — and I tinker with my editor until it's exactly right. Arch Linux daily driver.
+WordPress developer from Córdoba, Argentina. My day-to-day is building and maintaining WooCommerce stores: custom themes, plugins and integrations — PHP on the back, React and TypeScript on the front. On my own time I explore other stacks (a bit of Android, editor tooling) and I customize my Arch Linux setup until it feels just right.
 
 ---
 
@@ -15,32 +15,29 @@ Full-stack developer from Córdoba, Argentina. Lately I live in the terminal: I 
 2026  Jan ▁ Feb ▁ Mar ▁ Apr ▂ May ▁ Jun ▁ Jul ▃ Aug █ Sep ▅ Oct ▆  1,401
 ```
 
-**Stack this year:** ![Go](https://img.shields.io/badge/Go-e96443?style=flat-square&logo=go&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-e96443?style=flat-square&logo=typescript&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-e96443?style=flat-square&logo=kotlin&logoColor=white) ![Lua](https://img.shields.io/badge/Lua-e96443?style=flat-square&logo=lua&logoColor=white) ![Python](https://img.shields.io/badge/Python-e96443?style=flat-square&logo=python&logoColor=white) ![Shell](https://img.shields.io/badge/Shell-e96443?style=flat-square&logo=gnubash&logoColor=white)
+**Stack this year:** ![PHP](https://img.shields.io/badge/PHP-e96443?style=flat-square&logo=php&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-e96443?style=flat-square&logo=typescript&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-e96443?style=flat-square&logo=kotlin&logoColor=white) ![Lua](https://img.shields.io/badge/Lua-e96443?style=flat-square&logo=lua&logoColor=white) ![Shell](https://img.shields.io/badge/Shell-e96443?style=flat-square&logo=gnubash&logoColor=white)
 
-Also contributing upstream to [bjarneo/cliamp](https://github.com/bjarneo/cliamp) and [is-a-dev/register](https://github.com/is-a-dev/register) 🤝
+Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 
 ---
 
-## 🚀 Shipped in 2026
+## 🚀 Personal projects
 
 | Project | What it is | Stack |
 |---|---|---|
-| [cliamp](https://github.com/cartudev/cliamp) | Terminal music player inspired by Winamp | Go |
-| [cliamp-plugin-cover](https://github.com/cartudev/cliamp-plugin-cover) | Album art pane for cliamp — kitty images or ANSI blocks, placed where you want | Lua |
-| [tg-music-cli](https://github.com/cartudev/tg-music-cli) | Fast terminal music player & streamer for Telegram channels — modern TUI, MPRIS2 desktop controls, album art, smart caching | Python |
 | [lector-personal](https://github.com/cartudev/lector-personal) | Native Android EPUB reader with a personal dictionary and Locator-based notes | Kotlin |
 | [opencode-message-times](https://github.com/cartudev/opencode-message-times) | OpenCode plugin: local chat timestamps, without leaking them to the model | TypeScript |
+| [cliamp-plugin-cover](https://github.com/cartudev/cliamp-plugin-cover) | Album art pane for [cliamp](https://github.com/bjarneo/cliamp) — kitty images or ANSI blocks, placed where you want | Lua |
 
 ---
 
 ## 🛠️ Everyday tools
 
+- **WordPress:** WooCommerce, custom themes & plugins, Storefront child themes
+- **Backend:** PHP, Node.js, Express
 - **Frontend:** React, TypeScript, TailwindCSS
-- **Systems & CLI:** Go, Python, Shell, Lua
-- **Mobile:** Kotlin / Android
-- **Backend Plains:** Node.js, Express.js
-- **Databases:** MongoDB, SQL, Firebase
-- **Tools:** Git, Docker, VSCode, Figma
+- **Databases:** MySQL, SQL, Firebase
+- **Tools:** Git, VSCode, Figma
 
 ---
 
@@ -48,7 +45,6 @@ Also contributing upstream to [bjarneo/cliamp](https://github.com/bjarneo/cliamp
 
 ![cartudev metrics](metrics.svg)
 <center>Actualizado a diario por GitHub Actions — incluye contribuciones en repos privadas.</center>
-
 
 ---
 
