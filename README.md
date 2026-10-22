@@ -1,62 +1,63 @@
 <img src="images/banner.svg"></img>
 
-### 🌐 Welcome to My GitHub Profile!
+### 👋 Hi, I'm Carlos — cartudev
 
-I am a full-stack developer with a strong focus on front-end technologies. My goal is to build efficient, scalable, and user-friendly applications. I enjoy learning new technologies and continuously improving my skills. Additionally, I am an Arch Linux enthusiast, always exploring its capabilities and customization options.
-
----
-
-## 🚀 About Me
-- 💻 Currently working on web development projects using React, TypeScript, and Node.js.
-- 📚 Learning and experimenting with new technologies and frameworks.
-- 🎨 Interested in UI/UX design and improving user experience.
-- 🌍 Based in Córdoba, Argentina.
+Full-stack developer from Córdoba, Argentina. Lately I live in the terminal: I build the tools I use every day — a terminal music player, a Telegram streamer, an Android EPUB reader — and I tinker with my editor until it's exactly right. Arch Linux daily driver.
 
 ---
 
-## 🛠️ Technologies & Tools
-- **Frontend:** React, TypeScript, JavaScript, HTML, CSS, Sass, TailwindCSS
-- **Backend:** Node.js, Express.js, Python, PHP
+## 📈 2026 so far
+
+**1,401 contributions** — my most active year yet, **9× my previous best** (154 last year, 40 the year before). The ramp speaks for itself:
+
+```text
+2025  ▎· · · · · · · · · · · ·  154
+2026  Jan ▁ Feb ▁ Mar ▁ Apr ▂ May ▁ Jun ▁ Jul ▃ Aug █ Sep ▅ Oct ▆  1,401
+```
+
+**Stack this year:** ![Go](https://img.shields.io/badge/Go-e96443?style=flat-square&logo=go&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-e96443?style=flat-square&logo=typescript&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-e96443?style=flat-square&logo=kotlin&logoColor=white) ![Lua](https://img.shields.io/badge/Lua-e96443?style=flat-square&logo=lua&logoColor=white) ![Python](https://img.shields.io/badge/Python-e96443?style=flat-square&logo=python&logoColor=white) ![Shell](https://img.shields.io/badge/Shell-e96443?style=flat-square&logo=gnubash&logoColor=white)
+
+Also contributing upstream to [bjarneo/cliamp](https://github.com/bjarneo/cliamp) and [is-a-dev/register](https://github.com/is-a-dev/register) 🤝
+
+---
+
+## 🚀 Shipped in 2026
+
+| Project | What it is | Stack |
+|---|---|---|
+| [cliamp](https://github.com/cartudev/cliamp) | Terminal music player inspired by Winamp | Go |
+| [cliamp-plugin-cover](https://github.com/cartudev/cliamp-plugin-cover) | Album art pane for cliamp — kitty images or ANSI blocks, placed where you want | Lua |
+| [tg-music-cli](https://github.com/cartudev/tg-music-cli) | Fast terminal music player & streamer for Telegram channels — modern TUI, MPRIS2 desktop controls, album art, smart caching | Python |
+| [lector-personal](https://github.com/cartudev/lector-personal) | Native Android EPUB reader with a personal dictionary and Locator-based notes | Kotlin |
+| [opencode-message-times](https://github.com/cartudev/opencode-message-times) | OpenCode plugin: local chat timestamps, without leaking them to the model | TypeScript |
+
+---
+
+## 🛠️ Everyday tools
+
+- **Frontend:** React, TypeScript, TailwindCSS
+- **Systems & CLI:** Go, Python, Shell, Lua
+- **Mobile:** Kotlin / Android
+- **Backend Plains:** Node.js, Express.js
 - **Databases:** MongoDB, SQL, Firebase
-- **CMS:** WordPress, WooCommerce
-- **Tools:** Git, GitHub, Docker, VSCode, Postman, Figma
+- **Tools:** Git, Docker, VSCode, Figma
 
 ---
 
-## 📂 Projects
-### 1. [7tal Works](https://github.com/cartudev/7talWorks)
-This is a design plugin for modular structural systems created in Python for use in Blender 3.5.
+## 📊 GitHub Stats
 
-### 2. [Pure Minesweeper](https://github.com/cartudev/minesweeper)
-A classic minesweeper game implemented with vanilla JavaScript. Features theme selection and customizable grid sizes.
+![cartudev metrics](metrics.svg)
+<center>Actualizado a diario por GitHub Actions — incluye contribuciones en repos privadas.</center>
 
-### 3. [Wordpress - WooCommerce theme](https://github.com/cartudev/Wordpress-WooCommerce-Theme)
-A WordPress WooCommerce child theme based on Storefront, currently under development.
-
-### 4. [TuBar](https://github.com/cartudev/tubar-reactnative--original)
-A mobile app for bar management, including order processing, management, and reporting, built with a team.
-
-### 5. [Automate-PDF](https://github.com/cartudev/Automate-PDF)
-A CLI application that automates data entry into templates from files.
-
----
-
-## 📈 GitHub Stats
-![cartudev Github Stats](https://github-readme-stats.vercel.app/api?username=cartudev&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)
 
 ---
 
 ## 📫 How to Reach Me
+
 - **Email:** [cartcarll@gmail.com](mailto:cartcarll@gmail.com)
 - **LinkedIn:** [linkedin.com/in/cartcarll/](https://www.linkedin.com/in/cartcarll/)
-- **Portfolio:** [https://cartudev.github.io/](https://cartudev.github.io/)
+- **Portfolio:** [cartudev.github.io](https://cartudev.github.io/)
 
 ---
 
-Thank you for visiting my GitHub profile. Feel free to explore my repositories and reach out if you have any questions or collaboration ideas!
-
----
-
-![Visitor Count](https://komarev.com/ghpvc/?username=cartudev&color=blue)
-
-
+Thank you for visiting — if any of these tools sound like your kind of thing, feel free to reach out or open an issue.
