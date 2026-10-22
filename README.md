@@ -2,7 +2,7 @@
 
 ### 👋 Hi, I'm Carlos — cartudev
 
-WordPress developer from Córdoba, Argentina. My day-to-day is building and maintaining WooCommerce stores: custom themes, plugins and integrations — PHP on the back, React and TypeScript on the front. On my own time I explore other stacks (a bit of Android, editor tooling) and I customize my Arch Linux setup until it feels just right.
+WordPress developer from Córdoba, Argentina. My day-to-day is building and maintaining WooCommerce stores: custom themes, plugins and integrations — PHP on the back, React and TypeScript on the front. On my own time I explore other stacks (a bit of Android, editor tooling), I run my whole dev workflow through [OpenCode](https://opencode.ai), and I keep tuning my Arch Linux + Neovim setup until it feels just right.
 
 ---
 
@@ -37,14 +37,15 @@ Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 - **Backend:** PHP, Node.js, Express
 - **Frontend:** React, TypeScript, TailwindCSS
 - **Databases:** MySQL, SQL, Firebase
-- **Tools:** Git, VSCode, Figma
+- **Tools:** Git, Neovim, OpenCode
 
 ---
 
 ## 📊 GitHub Stats
 
 ![cartudev metrics](metrics.svg)
-<center>Actualizado a diario por GitHub Actions — incluye contribuciones en repos privadas.</center>
+
+> **TL;DR — what the numbers say:** an extremely active year. 2,893 commits in the last 12 months (peaks of 163/day), most of it across 63 repositories — a lot of it client work kept private, plus my own open-source tools. In 2026 alone: **1,401 contributions, 9× my previous best.**
 
 ---
 

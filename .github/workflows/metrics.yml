@@ -7,6 +7,12 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/metrics.yml"
+
+concurrency:
+  group: metrics
+  cancel-in-progress: true
 
 permissions:
   contents: write
