@@ -34,15 +34,15 @@
       </div>
 
 <pre><div class="stdin"><span class="ps1-path">cartudev@metrics</span>:<span class="ps1-location">~</span># whoami</div><div class="stdout"><b>Carlos</b> registered=4y, uid=6669, gid=1
-  contributed to 63 repositories <b><span style="color:#ebedf0">#</span><span style="color:#9be9a8">#</span><span style="color:#9be9a8">#</span><span style="color:#216e39">#</span><span style="color:#30a14e">#</span><span style="color:#40c463">#</span><span style="color:#216e39">#</span><span style="color:#ebedf0">#</span><span style="color:#ebedf0">#</span><span style="color:#40c463">#</span><span style="color:#40c463">#</span><span style="color:#30a14e">#</span><span style="color:#30a14e">#</span><span style="color:#ebedf0">#</span></b>
+  contributed to 63 repositories <b><span style="color:#ebedf0">#</span><span style="color:#9be9a8">#</span><span style="color:#9be9a8">#</span><span style="color:#216e39">#</span><span style="color:#30a14e">#</span><span style="color:#40c463">#</span><span style="color:#216e39">#</span><span style="color:#ebedf0">#</span><span style="color:#ebedf0">#</span><span style="color:#40c463">#</span><span style="color:#40c463">#</span><span style="color:#30a14e">#</span><span style="color:#30a14e">#</span><span style="color:#40c463">#</span></b>
   followed by <b>3</b> users
 </div>
 <div class="stdin"><span class="ps1-path">cartudev@metrics</span>:<span class="ps1-location">~</span># git status</div><div class="stdout"><b>Recent activity</b>
-  <b> 2906</b> commits
+  <b> 1562</b> commits
   <b>    0</b> pull requests reviewed
-  <b>   12</b> pull requests opened
-  <b>    5</b> issues opened
-  <b>  126</b> issue comments
+  <b>   99</b> pull requests opened
+  <b>   79</b> issues opened
+  <b>  130</b> issue comments
 
 <b>Tracked activity</b>
   <b>    7</b> users followed
@@ -975,13 +975,13 @@ dr-x         LICENSE
                       <path fill="#30a14e" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,3.1411042944785277 0,2.1411042944785277 z"/>
                       <path fill="#30a14e" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,2.1411042944785277 1.7,3.1411042944785277 z"/>
                     </g>
-                    <g transform="translate(-6.8, 8.858895705521473)">
+                    <g transform="translate(-6.8, 8.748466257668712)">
                       <path fill="#30a14e" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
-                      <path fill="#30a14e" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,3.1411042944785277 0,2.1411042944785277 z"/>
-                      <path fill="#30a14e" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,2.1411042944785277 1.7,3.1411042944785277 z"/>
+                      <path fill="#30a14e" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,3.2515337423312882 0,2.2515337423312882 z"/>
+                      <path fill="#30a14e" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,2.2515337423312882 1.7,3.2515337423312882 z"/>
                     </g></g></g></svg></div>
 <b>    4</b> consecutive days with commits
-<b>~7.57</b> commits per day in average
+<b>~7.59</b> commits per day in average
 </div>
 
 
