@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/metrics.yml"
+      - ".github/scripts/generate_city.py"
 
 concurrency:
   group: metrics
@@ -50,11 +51,13 @@ jobs:
         env:
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
 
-      - name: Commit city
+      - name: Commit generated artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
-          git add city.svg
-          git diff --cached --quiet || git commit -m "ci: refresh city"
+          # stage BOTH generated files first: lowlighter/metrics rewrites metrics.svg,
+          # and pull --rebase refuses to run on a dirty worktree
+          git add metrics.svg city.svg
+          git pull --rebase --autostash origin main
+          git diff --cached --quiet || git commit -m "ci: refresh metrics + city"
           git push
