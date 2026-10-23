@@ -2,7 +2,7 @@
 
 ### 👋 Hi, I'm Carlos — cartudev
 
-WordPress developer from Córdoba, Argentina. My day-to-day is building and maintaining WooCommerce stores: custom themes, plugins and integrations — PHP on the back, React and TypeScript on the front. On my own time I explore other stacks (a bit of Android, editor tooling), I run my whole dev workflow through [OpenCode](https://opencode.ai), and I keep tuning my Arch Linux + Neovim setup until it feels just right.
+WordPress developer from Córdoba, Argentina. My day-to-day is building and maintaining WooCommerce stores: custom themes, plugins and integrations — PHP and modern JavaScript where it counts, React only when a project really calls for it. On my own time I explore other stacks (a bit of Android, editor tooling), I run my whole dev workflow through [OpenCode](https://opencode.ai), and I keep tuning my Arch Linux + Neovim setup until it feels just right.
 
 ---
 
@@ -35,7 +35,8 @@ Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 
 - **WordPress:** WooCommerce, custom themes & plugins, Storefront child themes
 - **Backend:** PHP, Node.js, Express
-- **Frontend:** React, TypeScript, TailwindCSS
+- **Front-end:** SCSS, vanilla JavaScript — React only when the project calls for it
+- **TypeScript:** editor plugins & tooling
 - **Databases:** MySQL, SQL, Firebase
 - **Tools:** Git, Neovim, OpenCode
 
