@@ -212,7 +212,7 @@ def pad(gx, gy, w, d, stroke=GRID_LINE, sw=0.8, fill=PAVE):
     return poly([N, E, S, W], fill, stroke=stroke, sw=sw)
 
 
-def bot(name, route_id, dur, begin, body, scale=1.4):
+def bot(name, route_id, dur, begin, body, scale=2.9):
     return f'''<g>
   <animateMotion dur="{dur}" begin="{begin}" repeatCount="indefinite" rotate="0">
     <mpath href="#{route_id}"/>
@@ -357,13 +357,13 @@ def main():
     parts.extend(tags)
     # bot fleet: two to three units per avenue, staggered like real traffic
     fleet = [
-        ("alpha", "route-a", "34s", "-9s", "#67e8f9"),
-        ("alpha2", "route-a", "34s", "-26s", "#38bdf8"),
-        ("alpha3", "route-a", "34s", "-31s", "#a5f3fc"),
-        ("beta", "route-b", "41s", "-23s", "#f9a8d4"),
-        ("beta2", "route-b", "41s", "-37s", "#ec4899"),
-        ("gamma", "route-c", "38s", "-4s", "#fbbf24"),
-        ("gamma2", "route-c", "38s", "-19s", "#fb923c"),
+        ("alpha", "route-a", "34s", "-9s", "#5eead4"),
+        ("alpha2", "route-a", "34s", "-26s", "#f1f5f9"),
+        ("alpha3", "route-a", "34s", "-31s", "#bef264"),
+        ("beta", "route-b", "41s", "-23s", "#fb7185"),
+        ("beta2", "route-b", "41s", "-37s", "#fcd34d"),
+        ("gamma", "route-c", "38s", "-4s", "#7dd3fc"),
+        ("gamma2", "route-c", "38s", "-19s", "#fda4af"),
         ("gamma3", "route-c", "38s", "-33s", "#c4b5fd"),
     ]
     for name, route_id, dur, begin, body in fleet:
