@@ -31,10 +31,10 @@ ORANGE = "#fb7185"
 TXT = "#cdd6f4"
 MUT = "#9b8fd0"
 
-# ---- isometric constants ----
+# ---- isometric constants (higher camera: ~1.56:1) ----
 W, H = 1200, 800
-HW, HH = 32.0, 16.0
-OX, OY = 430.0, 252.0  # iso origin: screen coords of tile (0,0)
+HW, HH = 32.0, 20.5
+OX, OY = 450.0, 215.0  # iso origin: screen coords of tile (0,0)
 COLS, ROWS = 13, 4     # 13 weekly blocks x 4 district rows = 52 weeks
 BW, BD = 1.34, 1.10    # block footprint in tile units
 GX_STEP = BW + 0.08    # gap (street) between blocks in a row
@@ -267,9 +267,8 @@ def main():
         '  .tw { animation: twinkle 3s ease-in-out infinite; }'
         '  @keyframes twinkle { 0%,100% { opacity: 0.15; } 50% { opacity: 0.9; } }'
         '  .sweep { animation: sweep 12s linear infinite; }'
-        f'  @keyframes sweep {{ from {{ transform: translateY(-50px); opacity: 0; }}'
-        f'  10% {{ opacity: 0.45; }} 90% {{ opacity: 0.45; }}'
-        f'  to {{ transform: translateY({H * 0.78}px); opacity: 0; }} }}'
+        f'  @keyframes sweep {{ from {{ transform: translateY(-50px); }}'
+        f'  to {{ transform: translateY({H * 0.75}px); }} }}'
         '  .ticker { animation: ticker 26s linear infinite; }'
         '  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }'
         '</style></defs>'
@@ -291,36 +290,7 @@ def main():
     parts.append(poly([(0, 296), (220, 262), (430, 300), (700, 268), (960, 298),
                        (1200, 276), (1200, 720), (0, 720)], "#190e38", op=0.95))
 
-    # ---- districts (rows) & weekly blocks ----
-    peak = max(max(weekly), 1)
-    month_pylons = []  # (gx, gy, label)
-    seen_months = set()
-    for idx, val in enumerate(weekly):
-        row, col = divmod(idx, COLS)
-        gy = row * ROW_DY
-        gx = col * GX_STEP - 0.9
-        if val == 0:
-            parts.append(pad(gx, gy, BW, BD, stroke="#241651", sw=0.7, fill="#120a29"))
-            a = iso(gx + BW / 2, gy + BD / 2)
-            parts.append(f'<line x1="{a[0]}" y1="{a[1]}" x2="{a[0]}" y2="{a[1] - 8}" stroke="#241651" stroke-width="1"/>')
-        else:
-            parts.append(pad(gx, gy, BW, BD))
-            h = 12 + ((val / peak) ** 0.58) * 260
-            col_top = level_color(val, peak)
-            wdate = starts[idx].isoformat()
-            parts.append(tower(gx, gy, BW, BD, h, col_top, week=None, val=val, label=wdate))
-        m = starts[idx].month
-        if m not in seen_months:
-            seen_months.add(m)
-            month_pylons.append((idx % COLS, ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"][m - 1]))
-    # street signs: subtle single compass line, months live in the DISTRICTS panel
-    p_start = iso(-0.9, ROWS * ROW_DY + BD * 0.35)
-    p_end = iso(COLS * GX_STEP - 0.9, ROWS * ROW_DY + BD * 0.35)
-    parts.append(f'<path d="M {p_start[0]},{p_start[1]} L {p_end[0]},{p_end[1]}" fill="none" stroke="#4c1d95" stroke-width="1" opacity="0.5"/>')
-    parts.append(txt(p_start[0] - 6, p_start[1] + 14, "JAN —", 8, MUT, anchor="start", op=0.6))
-    parts.append(txt(p_end[0] + 6, p_end[1] + 14, "DEC →", 8, MUT, anchor="end", op=0.6))
-
-    # avenues: neon street glow + robot paths (between district rows)
+    # ---- ground network: avenues + robot routes (drawn before towers) ----
     routes = {}
     for rid, row_av, direction in (("route-a", 1, "west"), ("route-b", 2, "east"), ("route-c", 3, "west")):
         gy_mid = row_av * ROW_DY - (ROW_DY - BD) / 2.0
@@ -335,6 +305,41 @@ def main():
         parts.append(f'<path id="{rid}" d="{d}" fill="none"/>')
         parts.append(f'<path d="{d}" fill="none" stroke="#4c1d95" stroke-width="2.4" opacity="0.5"/>')
         parts.append(f'<path d="{d}" fill="none" stroke="#22d3ee" stroke-width="0.5" stroke-dasharray="3 7" opacity="0.8"/>')
+    # street compass: JAN at the first block, DEC at the last (true iso ends)
+    jan_p = iso(-1.05, 0.3)
+    dec_col = (51 % COLS)
+    dec_row = 51 // COLS
+    dec_p = iso(dec_col * GX_STEP - 0.9 + BW + 0.12, dec_row * ROW_DY + BD * 0.5)
+    parts.append(txt(jan_p[0] - 8, jan_p[1] + 4, "JAN", 8, MUT, "bold", "1", anchor="end", op=0.7))
+    parts.append(txt(dec_p[0] + 8, dec_p[1] + 4, "DEC", 8, MUT, "bold", "1", anchor="start", op=0.7))
+
+    # ---- districts (rows) & weekly blocks ----
+    peak = max(max(weekly), 1)
+    tags = []  # week value tags: drawn after all geometry so nothing covers them
+    for idx, val in enumerate(weekly):
+        row, col = divmod(idx, COLS)
+        gy = row * ROW_DY
+        gx = col * GX_STEP - 0.9
+        if val == 0:
+            parts.append(pad(gx, gy, BW, BD, stroke="#241651", sw=0.7, fill="#120a29"))
+            a = iso(gx + BW / 2, gy + BD / 2)
+            parts.append(f'<line x1="{a[0]}" y1="{a[1]}" x2="{a[0]}" y2="{a[1] - 8}" stroke="#241651" stroke-width="1"/>')
+        else:
+            parts.append(pad(gx, gy, BW, BD))
+            h = 12 + ((val / peak) ** 0.5) * 285
+            col_top = level_color(val, peak)
+            wdate = starts[idx].isoformat()
+            parts.append(tower(gx, gy, BW, BD, h, col_top, week=None, val=val, label=wdate))
+            if val >= 0.4 * peak:
+                t = iso(gx + BW / 2, gy + BD / 2, h + 18)
+                c = level_color(val, peak)
+                tags.append(
+                    f'<text x="{t[0]}" y="{t[1] + 3}" font-family="ui-monospace,Menlo,monospace" '
+                    f'font-size="12" font-weight="bold" fill="{c}" letter-spacing="0" '
+                    f'text-anchor="middle" opacity="0.95" stroke="#05030e" '
+                    f'stroke-width="2.6" paint-order="stroke">{val}</text>'
+                )
+    parts.extend(tags)
     parts.append(bot("alpha", "route-a", "34s", "-9s", "#67e8f9"))
     parts.append(bot("beta", "route-b", "41s", "-23s", "#f9a8d4"))
     parts.append(bot("gamma", "route-c", "38s", "-4s", "#fbbf24"))
