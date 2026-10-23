@@ -17,7 +17,9 @@ import sys
 from urllib import request
 
 USER = os.environ.get("CITY_USER", "cartudev")
-YEAR = int(os.environ.get("CITY_YEAR", str(dt.date.today().year)))
+TODAY = dt.date.today()
+# rolling 365-day window: exactly 52 contribution weeks ending this week
+FROM_DATE = TODAY - dt.timedelta(days=364)
 
 # ---- palette (matches README banner: dark purple + orange/pink drops) ----
 BG_TOP, BG_BOT = "#0a0614", "#131034"
@@ -93,8 +95,8 @@ def fetch_stats(token: str) -> dict:
         "query": QUERY,
         "variables": {
             "login": USER,
-            "from": f"{YEAR}-01-01T00:00:00Z",
-            "to": f"{YEAR}-12-31T23:59:59Z",
+            "from": f"{FROM_DATE.isoformat()}T00:00:00Z",
+            "to": f"{TODAY.isoformat()}T23:59:59Z",
         },
     }).encode()
     req = request.Request(
@@ -122,18 +124,21 @@ def days_flat(c: dict):
 
 
 def weeks_and_starts(c: dict, need: int = 52):
-    """weekly totals + the date of each week's monday."""
+    """weekly totals + the date of each week's monday (rolling tail)."""
     weekly, starts = [], []
-    epoch = dt.date(YEAR, 1, 1)
     for w in c["contributionCalendar"]["weeks"]:
         counts = [d["contributionCount"] for d in w["contributionDays"]]
         dates = [d["date"] for d in w["contributionDays"]]
         weekly.append(sum(counts))
-        starts.append(dt.date.fromisoformat(dates[0]) if dates else epoch)
+        starts.append(dt.date.fromisoformat(dates[0]) if dates else TODAY)
+    # keep the LAST `need` weeks (drop oldest overflow), pad front if short
+    if len(weekly) > need:
+        weekly, starts = weekly[-need:], starts[-need:]
     while len(weekly) < need:
-        weekly.append(0)
-        starts.append(epoch + dt.timedelta(days=0))
-    return weekly[:need], starts[:need]
+        first = starts[0] if starts else TODAY
+        weekly.insert(0, 0)
+        starts.insert(0, first - dt.timedelta(days=7))
+    return weekly, starts
 
 
 def longest_streak(flat):
@@ -207,11 +212,12 @@ def pad(gx, gy, w, d, stroke=GRID_LINE, sw=0.8, fill=PAVE):
     return poly([N, E, S, W], fill, stroke=stroke, sw=sw)
 
 
-def bot(name, route_id, dur, begin, body):
+def bot(name, route_id, dur, begin, body, scale=1.4):
     return f'''<g>
   <animateMotion dur="{dur}" begin="{begin}" repeatCount="indefinite" rotate="0">
     <mpath href="#{route_id}"/>
   </animateMotion>
+  <g transform="scale({scale})">
   <ellipse cx="0" cy="3.4" rx="7.5" ry="2.6" fill="#000" opacity="0.4"/>
   <rect x="-6.5" y="-9" width="13" height="10" rx="3" fill="{body}" stroke="#0a0614" stroke-width="1"/>
   <rect x="-4.8" y="-7.6" width="9.6" height="4" rx="1.8" fill="#0c0821" opacity="0.9"/>
@@ -219,6 +225,7 @@ def bot(name, route_id, dur, begin, body):
   <circle cx="2.2" cy="-5.6" r="1.1" fill="#fde047"><animate attributeName="opacity" values="1;0.1;1" dur="{dur}" repeatCount="indefinite"/></circle>
   <line x1="0" y1="-9" x2="0" y2="-13" stroke="{body}" stroke-width="1.3"/>
   <circle cx="0" cy="-14" r="1.7" fill="{NEON}"><animate attributeName="opacity" values="1;0.25;1" dur="1.05s" repeatCount="indefinite"/></circle>
+  </g>
   <animateTransform attributeName="transform" type="translate" values="0 0;0 -1.8;0 0" dur="0.4s" repeatCount="indefinite" additive="sum"/>
 </g>'''
 
@@ -231,8 +238,8 @@ def main():
     c = fetch_stats(token)
     weekly, starts = weeks_and_starts(c)
     flat = days_flat(c)
-    today = dt.date.today()
-    shown_days = min((today - dt.date(YEAR, 1, 1)).days + 1, len(flat))
+    today = TODAY
+    shown_days = len(flat)
     cal_total = c["contributionCalendar"]["totalContributions"]
     prs = c["totalPullRequestContributions"]
     issues = c["totalIssueContributions"]
@@ -241,13 +248,18 @@ def main():
     peak_day = max(flat)
     best_streak = longest_streak(flat)
 
-    # quarterly totals (districts)
-    quarters = [(1, 3), (4, 6), (7, 9), (10, 12)]
-    q_tot = []
-    for q_start_m, q_end_m in quarters:
-        s = sum(v for i, v in enumerate(weekly)
-                if q_start_m <= starts[min(i, len(starts) - 1)].month <= q_end_m)
-        q_tot.append(s)
+    # district totals: 13-week buckets over the rolling window, labeled
+    # by the actual months each bucket covers (cross-year aware)
+    q_tot, q_labels = [], []
+    for b in range(ROWS):
+        lo, hi = b * COLS, min((b + 1) * COLS, len(weekly))
+        q_tot.append(sum(weekly[lo:hi]))
+        s, e = starts[lo], starts[hi - 1]
+        mn = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+
+        def tag(d):
+            return f"{mn[d.month - 1]}{'' if d.year == today.year else str(d.year)[2:]}"
+        q_labels.append(f"{tag(s)}–{tag(e)}")
 
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">']
     parts.append(
@@ -305,13 +317,16 @@ def main():
         parts.append(f'<path id="{rid}" d="{d}" fill="none"/>')
         parts.append(f'<path d="{d}" fill="none" stroke="#4c1d95" stroke-width="2.4" opacity="0.5"/>')
         parts.append(f'<path d="{d}" fill="none" stroke="#22d3ee" stroke-width="0.5" stroke-dasharray="3 7" opacity="0.8"/>')
-    # street compass: JAN at the first block, DEC at the last (true iso ends)
+    # street compass: month labels at the true iso ends (rolling-aware)
+    mn = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+    start_lb = mn[starts[0].month - 1] + ("" if starts[0].year == TODAY.year else str(starts[0].year)[2:])
+    end_lb = mn[starts[-1].month - 1] + ("" if starts[-1].year == TODAY.year else str(starts[-1].year)[2:])
     jan_p = iso(-1.05, 0.3)
     dec_col = (51 % COLS)
     dec_row = 51 // COLS
     dec_p = iso(dec_col * GX_STEP - 0.9 + BW + 0.12, dec_row * ROW_DY + BD * 0.5)
-    parts.append(txt(jan_p[0] - 8, jan_p[1] + 4, "JAN", 8, MUT, "bold", "1", anchor="end", op=0.7))
-    parts.append(txt(dec_p[0] + 8, dec_p[1] + 4, "DEC", 8, MUT, "bold", "1", anchor="start", op=0.7))
+    parts.append(txt(jan_p[0] - 8, jan_p[1] + 4, start_lb, 8, MUT, "bold", "1", anchor="end", op=0.7))
+    parts.append(txt(dec_p[0] + 8, dec_p[1] + 4, end_lb, 8, MUT, "bold", "1", anchor="start", op=0.7))
 
     # ---- districts (rows) & weekly blocks ----
     peak = max(max(weekly), 1)
@@ -340,9 +355,20 @@ def main():
                     f'stroke-width="2.6" paint-order="stroke">{val}</text>'
                 )
     parts.extend(tags)
-    parts.append(bot("alpha", "route-a", "34s", "-9s", "#67e8f9"))
-    parts.append(bot("beta", "route-b", "41s", "-23s", "#f9a8d4"))
-    parts.append(bot("gamma", "route-c", "38s", "-4s", "#fbbf24"))
+    # bot fleet: two to three units per avenue, staggered like real traffic
+    fleet = [
+        ("alpha", "route-a", "34s", "-9s", "#67e8f9"),
+        ("alpha2", "route-a", "34s", "-26s", "#38bdf8"),
+        ("alpha3", "route-a", "34s", "-31s", "#a5f3fc"),
+        ("beta", "route-b", "41s", "-23s", "#f9a8d4"),
+        ("beta2", "route-b", "41s", "-37s", "#ec4899"),
+        ("gamma", "route-c", "38s", "-4s", "#fbbf24"),
+        ("gamma2", "route-c", "38s", "-19s", "#fb923c"),
+        ("gamma3", "route-c", "38s", "-33s", "#c4b5fd"),
+    ]
+    for name, route_id, dur, begin, body in fleet:
+        parts.append(bot(name, route_id, dur, begin, body))
+    n_bots = len(fleet)
 
     # courier drone in the sky
     parts.append(
@@ -374,11 +400,11 @@ def main():
     G2 = ' filter="url(#glow2)"'
     # top-left
     parts.append(f'<rect x="28" y="26" width="330" height="64" rx="10" fill="#0c0821" opacity="0.86" stroke="{NEON}" stroke-width="1"/>')
-    parts.append(txt(44, 52, f"{USER}.city — {YEAR}", 16, NEON, "bold", "2", filter_="url(#glow2)"))
-    parts.append(txt(44, 74, "contribution calendar · client + open source", 10.5, MUT, spacing="0.5"))
+    parts.append(txt(44, 52, f"{USER}.city", 16, NEON, "bold", "2", filter_="url(#glow2)"))
+    parts.append(txt(44, 74, f"rolling 365-day skyline · client + open source", 10.5, MUT, spacing="0.5"))
     # top-right: signals
     signals = [
-        ("CONTRIBUTIONS", cal_total),
+        ("CONTRIBUTIONS 365D", cal_total),
         ("PRS OPENED", prs),
         ("ISSUES", issues),
         ("REVIEWS", reviews),
@@ -396,10 +422,10 @@ def main():
     # bottom-left: districts (quarterly ramp)
     px, py, pw, ph = 28, H - 122, 332, 96
     parts.append(f'<rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="10" fill="#0c0821" opacity="0.86" stroke="{ORANGE}" stroke-width="1"/>')
-    parts.append(txt(px + 16, py + 20, "DISTRICTS — THE RAMP", 10, ORANGE, "bold", "2"))
+    pt_label = "DISTRICTS — LAST 52 WKS"
+    parts.append(txt(px + 16, py + 20, pt_label, 10, ORANGE, "bold", "2"))
     maxq = max(max(q_tot), 1)
     bx = px + 16
-    q_labels = ["JAN–MAR", "APR–JUN", "JUL–SEP", "OCT–DEC"]
     qcols = ["#22d3ee", "#7c3aed", "#ec4899", "#f97316"]
     bar_top = py + 34
     bar_h = 36
@@ -413,13 +439,13 @@ def main():
     rx = W - 302
     parts.append(f'<rect x="{rx - 16}" y="{py}" width="284" height="96" rx="10" fill="#0c0821" opacity="0.86" stroke="{NEON}" stroke-width="1"/>')
     parts.append(txt(rx, py + 22, "RUNTIME", 10, NEON, "bold", "2"))
-    for j, (k, v) in enumerate([("PEAK DAY", peak_day), ("PEAK WEEK", peak_week), ("CITY BOTS", "3 en route")]):
+    for j, (k, v) in enumerate([("PEAK DAY", peak_day), ("PEAK WEEK", peak_week), ("CITY BOTS", n_bots)]):
         parts.append(txt(rx, py + 42 + j * 20, k, 10, MUT, spacing="0.5"))
         parts.append(txt(W - 36, py + 42 + j * 20, str(v), 12, "#f8fafc", "bold", "0", anchor="end"))
 
     # ticker
     tick = (f"{USER}@metrics:~$ rebuilt-the-team-workflow → everyone ships through the pipeline · "
-            f"1,401 contributions in {YEAR} and counting · refresh daily by github actions · ")
+            f"{cal_total:,} contributions in the last 365 days · refresh daily by github actions · ")
     parts.append(
         f'<rect x="0" y="{H - 20}" width="{W}" height="20" fill="#0a0614" opacity="0.88"/>'
         f'<g class="ticker"><text x="0" y="{H - 6}" font-family="monospace" font-size="11" '
