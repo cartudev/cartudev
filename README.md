@@ -33,7 +33,7 @@ Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 
 ## 🛠️ Everyday tools
 
-- **WordPress:** WooCommerce, custom themes & plugins, Storefront child themes
+- **WordPress:** WooCommerce stores, custom themes & plugins, integrations
 - **Backend:** PHP, Node.js, Express
 - **Front-end:** SCSS, vanilla JavaScript — React only when the project calls for it
 - **TypeScript:** editor plugins & tooling
