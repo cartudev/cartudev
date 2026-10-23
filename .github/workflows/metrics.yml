@@ -51,13 +51,15 @@ jobs:
         env:
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
 
-      - name: Commit generated artifacts
+      - name: Commit contribution city
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # stage BOTH generated files first: lowlighter/metrics rewrites metrics.svg,
-          # and pull --rebase refuses to run on a dirty worktree
-          git add metrics.svg city.svg
-          git pull --rebase --autostash origin main
-          git diff --cached --quiet || git commit -m "ci: refresh metrics + city"
-          git push
+          git add city.svg
+          if git diff --cached --quiet; then
+            echo "city.svg unchanged, nothing to commit"
+          else
+            git commit -m "ci: refresh city"
+            git pull --rebase --autostash origin main
+            git push
+          fi
