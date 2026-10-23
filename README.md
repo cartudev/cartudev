@@ -8,7 +8,7 @@ WordPress developer from Córdoba, Argentina. My day-to-day is building and main
 
 ## 📈 2026 so far
 
-**1,401 contributions** — my most active year yet, **9× my previous best** (154 last year, 40 the year before). The ramp speaks for itself:
+**1,401 contributions** — my most active year by far. Honest context: the jump isn't from coding more — this year I reorganized my team's entire development workflow, so a big part of what the team ships flows through me now.
 
 ```text
 2025  ▎· · · · · · · · · · · ·  154
@@ -46,7 +46,7 @@ Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 
 ![cartudev metrics](metrics.svg)
 
-> **TL;DR — what the numbers say:** an extremely active year. 2,893 commits in the last 12 months (peaks of 163/day), most of it across 63 repositories — a lot of it client work kept private, plus my own open-source tools. In 2026 alone: **1,401 contributions, 9× my previous best.**
+> **TL;DR — what the numbers say:** an extremely active year — 2,893 commits in the last 12 months (peaks of 163/day) across 63 repositories, a lot of it client work kept private, plus my own open-source tools. In 2026 alone: **1,401 contributions** — driven by rebuilding my team's whole dev workflow, not by counting keystrokes.
 
 ---
 
