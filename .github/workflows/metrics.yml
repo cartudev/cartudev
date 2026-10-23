@@ -21,6 +21,8 @@ jobs:
   metrics:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -42,3 +44,17 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_categories: programming
           plugin_languages_limit: 8
+
+      - name: Generate contribution city
+        run: python3 .github/scripts/generate_city.py city.svg
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+
+      - name: Commit city
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+          git add city.svg
+          git diff --cached --quiet || git commit -m "ci: refresh city"
+          git push

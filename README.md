@@ -44,7 +44,14 @@ Upstream contributions: [bjarneo/cliamp](https://github.com/bjarneo/cliamp)
 
 ## 📊 GitHub Stats
 
+[![cartudev.city — isometric city of vinyl contributions](city.svg)](https://github.com/cartudev/cartudev/actions/workflows/metrics.yml)
+
+<details>
+<summary>Terminal view — raw signal panel</summary>
+
 ![cartudev metrics](metrics.svg)
+
+</details>
 
 > **TL;DR — what the numbers say:** an extremely active year — 2,893 commits in the last 12 months (peaks of 163/day) across 63 repositories, a lot of it client work kept private, plus my own open-source tools. In 2026 alone: **1,401 contributions** — driven by rebuilding my team's whole dev workflow, not by counting keystrokes.
 
