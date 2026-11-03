@@ -34,15 +34,15 @@
       </div>
 
 <pre><div class="stdin"><span class="ps1-path">cartudev@metrics</span>:<span class="ps1-location">~</span># whoami</div><div class="stdout"><b>Carlos</b> registered=4y, uid=6669, gid=1
-  contributed to 61 repositories <b><span style="color:#40c463">#</span><span style="color:#30a14e">#</span><span style="color:#216e39">#</span><span style="color:#216e39">#</span><span style="color:#9be9a8">#</span><span style="color:#ebedf0">#</span><span style="color:#9be9a8">#</span><span style="color:#40c463">#</span><span style="color:#40c463">#</span><span style="color:#30a14e">#</span><span style="color:#9be9a8">#</span><span style="color:#ebedf0">#</span><span style="color:#ebedf0">#</span><span style="color:#ebedf0">#</span></b>
+  contributed to 67 repositories <b><span style="color:#30a14e">#</span><span style="color:#30a14e">#</span><span style="color:#216e39">#</span><span style="color:#9be9a8">#</span><span style="color:#ebedf0">#</span><span style="color:#9be9a8">#</span><span style="color:#9be9a8">#</span><span style="color:#40c463">#</span><span style="color:#30a14e">#</span><span style="color:#9be9a8">#</span><span style="color:#ebedf0">#</span><span style="color:#ebedf0">#</span><span style="color:#30a14e">#</span><span style="color:#216e39">#</span></b>
   followed by <b>3</b> users
 </div>
 <div class="stdin"><span class="ps1-path">cartudev@metrics</span>:<span class="ps1-location">~</span># git status</div><div class="stdout"><b>Recent activity</b>
-  <b> 1637</b> commits
+  <b> 1670</b> commits
   <b>    0</b> pull requests reviewed
-  <b>  116</b> pull requests opened
-  <b>   90</b> issues opened
-  <b>  185</b> issue comments
+  <b>  125</b> pull requests opened
+  <b>  138</b> issues opened
+  <b>  197</b> issue comments
 
 <b>Tracked activity</b>
   <b>    7</b> users followed
@@ -980,10 +980,10 @@ dr-x         LICENSE
                       <path fill="#30a14e" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,3.1411042944785277 0,2.1411042944785277 z"/>
                       <path fill="#30a14e" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,2.1411042944785277 1.7,3.1411042944785277 z"/>
                     </g>
-                    <g transform="translate(-8.5, 10.963190184049079)">
+                    <g transform="translate(-8.5, 10.926380368098158)">
                       <path fill="#9be9a8" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
-                      <path fill="#9be9a8" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,2.03680981595092 0,1.0368098159509203 z"/>
-                      <path fill="#9be9a8" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1.0368098159509203 1.7,2.03680981595092 z"/>
+                      <path fill="#9be9a8" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,2.0736196319018405 0,1.0736196319018405 z"/>
+                      <path fill="#9be9a8" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1.0736196319018405 1.7,2.0736196319018405 z"/>
                     </g>
                     <g transform="translate(-10.2, 12)">
                       <path fill="#ebedf0" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
@@ -994,9 +994,14 @@ dr-x         LICENSE
                       <path fill="#ebedf0" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
                       <path fill="#ebedf0" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,2 0,1 z"/>
                       <path fill="#ebedf0" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,1 1.7,2 z"/>
+                    </g>
+                    <g transform="translate(-1.7, 5.785276073619633)">
+                      <path fill="#30a14e" d="M1.7,2 0,1 1.7,0 3.4,1 z"/>
+                      <path fill="#30a14e" filter="url(#brightness1)" d="M0,1 1.7,2 1.7,3.214723926380368 0,2.214723926380368 z"/>
+                      <path fill="#30a14e" filter="url(#brightness2)" d="M1.7,2 3.4,1 3.4,2.214723926380368 1.7,3.214723926380368 z"/>
                     </g></g></g></svg></div>
-<b>    0</b> consecutive days with commits
-<b>~8.11</b> commits per day in average
+<b>    1</b> consecutive day with commits
+<b>~8.25</b> commits per day in average
 </div>
 
 
